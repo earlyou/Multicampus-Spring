@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- DI (Dependency Injection) 의존성 주입 -->
+	<bean id="udao" class="com.user.UserDao"></bean>
+	<bean id="uservice" class="com.user.UserService">
+		<property name="dao" ref="udao"></property>	<!-- Injecting "udao" using name"dao" -->
+	</bean>
+	
+	<bean id="pdao" class="com.product.ProductDao"></bean>
+	<bean id="pservice" class="com.product.ProductService">
+		<constructor-arg name="dao" ref="pdao"></constructor-arg>	<!-- constructor를 이용해 injection할 때 -->
+	</bean>
+	
+</beans>
