@@ -17,7 +17,7 @@ public class ProductUpdateTest {
 		Service<Integer, ProductVO> service = 
 				(Service<Integer, ProductVO>) factory.getBean("pservice");
 		
-		ProductVO p = new ProductVO(3, "seung", 50000, 2);
+		ProductVO p = new ProductVO(3, "card", 50000, 2);
 		
 		service.modify(p);
 	}

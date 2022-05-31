@@ -17,7 +17,7 @@ public class ProductInsertTest {
 		Service<Integer, ProductVO> service = 
 				(Service<Integer, ProductVO>) factory.getBean("pservice");
 		
-		ProductVO p = new ProductVO("uk", 960819, 8);
+		ProductVO p = new ProductVO("printer", 300000, 2.3);
 		service.register(p);
 	}
 }

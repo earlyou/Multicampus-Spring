@@ -6,8 +6,8 @@ import com.vo.ProductVO;
 
 public interface ProductMapper {
 	public void insert(ProductVO obj);
-	public void delete(Integer k);
+	public void delete(int obj);
 	public void update(ProductVO obj);
-	public ProductVO select(Integer k);
+	public ProductVO select(int obj);
 	public List<ProductVO> selectall();
 }

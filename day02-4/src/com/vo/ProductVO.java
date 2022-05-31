@@ -8,31 +8,31 @@ public class ProductVO {
 	private String name;
 	private int price;
 	private Date regdate;
-	private float rate;
+	private double rate;
 	
 	// Constructor
 	public ProductVO() {
 	}
-	public ProductVO(int id, String name, int price, Date regdate, float rate) {
+	public ProductVO(int id, String name, int price, Date regdate, double rate) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.regdate = regdate;
 		this.rate = rate;
 	}
-	public ProductVO(int id, String name, int price, float rate) {
+	public ProductVO(int id, String name, int price, double rate) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.rate = rate;
 	}
-	public ProductVO(String name, int price, Date regdate, float rate) {
+	public ProductVO(String name, int price, Date regdate, double rate) {
 		this.name = name;
 		this.price = price;
 		this.regdate = regdate;
 		this.rate = rate;
 	}
-	public ProductVO(String name, int price, float rate) {
+	public ProductVO(String name, int price, double rate) {
 		this.name = name;
 		this.price = price;
 		this.rate = rate;
@@ -63,10 +63,10 @@ public class ProductVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public float getRate() {
+	public double getRate() {
 		return rate;
 	}
-	public void setRate(float rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 	

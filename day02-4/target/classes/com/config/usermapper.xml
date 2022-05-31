@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.UserMapper">		<!-- com.mapper.UserMapper interface를 요청하면 아래 명령어 호출 할거야 -->
 	
 	<select id="select" parameterType="String" resultType="user">
-		SELECT * FROM CUST WHERE ID=#{obj}
+		SELECT * FROM CUST WHERE ID=#{obj}	<!-- parameterType은 #{ } type을 말한다 -->
 	</select>
 	<select id="selectall" resultType="user">	<!-- "user" = com.vo.UserVO -->
 		SELECT * FROM CUST
