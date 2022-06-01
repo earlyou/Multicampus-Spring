@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM CUST
 	</select>
 	<insert id="insert" parameterType="cust">
-		INSERT INTO CUST VALUES (#{id},#{name},#{addr},#{date})
+		INSERT INTO CUST VALUES (#{id},#{name},#{addr},#{regdate})
 	</insert>
 	<update id="update" parameterType="cust">
 		UPDATE CUST SET NAME=#{name},ADDR=#{addr},REGDATE=#{regdate} WHERE ID=#{id}
