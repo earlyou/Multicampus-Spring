@@ -1,6 +1,8 @@
 package com.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,7 +21,10 @@ public class ItemGetbpTest {
 		
 		List<ItemVO> list = null;
 		try {
-			list = service.getbp(10000, 20000);
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("low", 10000);
+			map.put("high", 30000);
+			list = service.getbp(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

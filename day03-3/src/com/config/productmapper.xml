@@ -5,7 +5,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.mapper.ProductMapper">
 	
 	<select id="select" parameterType="int" resultType="product">
-		SELECT * FROM PRODUCT WHERE ID=#{id}
+		SELECT p.id,p.name,p.price,p.regdate,p.cid,c.name as catename
+		FROM product p 
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.id = #{id}
 	</select>
 	<select id="selectall" resultType="product">
 		SELECT p.id,p.name,p.price,p.regdate,p.cid,c.name as catename

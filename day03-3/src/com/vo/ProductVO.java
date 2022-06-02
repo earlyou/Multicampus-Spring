@@ -9,7 +9,7 @@ public class ProductVO {
 	private int price;
 	private Date regdate;
 	private int cid;
-	private String catename;// category name, 조인을 위해서 필드 생성, crud할 땐 쓰지 않음
+	private String catename;// category name, JOIN을 위해서 필드 생성, crud할 땐 쓰지 않음
 	
 	// Constructor
 	public ProductVO() {

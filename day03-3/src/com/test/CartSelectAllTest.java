@@ -25,5 +25,6 @@ public class CartSelectAllTest {
 		for (CartVO cartVO : list) {
 			System.out.println(cartVO);
 		}
+		// 작동 안하는 이유, CartVO에 join이 될 영역의 Field를 만들어주지 않았기 때문이다.
 	}
 }

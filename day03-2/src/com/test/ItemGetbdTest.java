@@ -1,9 +1,5 @@
 package com.test;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -22,11 +18,8 @@ public class ItemGetbdTest {
 				(ItemService) factory.getBean("iservice");
 		
 		List<ItemVO> list = null;
-		String d = "2022-05-30";
-		DateFormat format = new SimpleDateFormat("yyyy-mmmm-dd");
-		Date date;
+		String date = "2022-05-30";
 		try {
-			date = format.parse(d);
 			list = service.getbd(date);
 		} catch (Exception e) {
 			e.printStackTrace();

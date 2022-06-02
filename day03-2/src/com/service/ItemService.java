@@ -1,7 +1,7 @@
 package com.service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,12 +42,12 @@ public class ItemService implements Service<Integer, ItemVO> {
 	}
 	
 	// 특정 가격 사이 가격 아이템 검색하기
-	public List<ItemVO> getbp(int p1, int p2) throws Exception {
-		return dao.getbp(p1, p2);
+	public List<ItemVO> getbp(Map<String, Integer> map) throws Exception {
+		return dao.getbp(map);
 	}
 	
 	// 해당 날짜 이후에 등록된 제품 검색
-	public List<ItemVO> getbd(Date date) throws Exception {
+	public List<ItemVO> getbd(String date) throws Exception {
 		return dao.getbd(date);
 	}
 }

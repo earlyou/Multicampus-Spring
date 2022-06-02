@@ -22,11 +22,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="searchname" parameterType="String" resultType="item">
 		SELECT * FROM ITEM WHERE NAME LIKE CONCAT('%',#{name},'%')
 	</select>
-	<select id="getbp" parameterType="int" resultType="item">
-		SELECT * FROM ITEM WHERE PRICE BETWEEN #{param1} AND #{param2}
+	<select id="getbp" parameterType="map" resultType="item">
+		SELECT * FROM ITEM WHERE PRICE BETWEEN #{low} AND #{high}
 	</select>
-	<select id="getbd" parameterType="Date" resultType="item">
-		SELECT * FROM ITEM WHERE REGDATE > #{date}
+	<select id="getbd" parameterType="String" resultType="item">
+		SELECT * FROM ITEM WHERE REGDATE >= #{date}
 	</select>
 </mapper>
 
