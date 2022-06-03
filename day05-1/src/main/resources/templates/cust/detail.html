@@ -1,0 +1,14 @@
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Cust Detail Page</h1>
+
+
+<div class="container">
+	<h3>ID: <span th:text="${dcust.id}"></span></h3>
+	<h3>PWD: <span th:text="${dcust.pwd}"></span></h3>
+	<h3>NAME: <span th:text="${dcust.name}"></span></h3>
+	<a href="" th:href="@{/cust/custupdate(id=${dcust.id})}" class="btn btn-success" role="button">Update</a>
+	<a href="" th:href="@{/cust/custdelete(id=${dcust.id})}" class="btn btn-danger" role="button">Delete</a>
+</div>
+
+</html>

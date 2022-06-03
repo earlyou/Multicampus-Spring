@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Cust Detail Page</h1>
+
+
+<div class="container">
+	<h3>ID: <span th:text="${dprod.id}"></span></h3>
+	<h3>NAME: <span th:text="${dprod.name}"></span></h3>
+	<h3>PRICE: <span th:text="${dprod.price}"></span></h3>
+	<h3>REGDATE: <span th:text="${#dates.format(dprod.regdate,'yyyy-MM-dd')}"></span></h3>
+	<h3>PRICE: <span th:text="${dprod.price}"></span></h3>
+	<a href="" th:href="@{/prod/produpdate(id=${dprod.id})}" class="btn btn-success" role="button">Update</a>
+	<a href="" th:href="@{/prod/proddelete(id=${dprod.id})}" class="btn btn-danger" role="button">Delete</a>
+</div>
+
+</html>

@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Cust Register Page</h1>
+<div class="table-responsive">          
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>PRICE</th>
+				<th>REGDATE</th>
+				<th>RATE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${allprod}">
+				<td><a href="proddetail" th:href="@{/prod/proddetail(id=${p.id})}" th:text="${p.id}">ID</a></td>
+				<td th:text="${p.name}">NAME</td>
+				<td th:text="${p.price}">PRICE</td>
+				<td th:text="${#dates.format(p.regdate,'yyyy-MM-dd')}">REGDATE</td>
+				<td th:text="${p.rate}">RATE</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</html>

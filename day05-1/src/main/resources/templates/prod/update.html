@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Cust Register Page</h1>
+<div class="container-fluid">
+	<form action="produpdateimpl" method="post">
+		<div class="row">
+			<div class="col-md-3">
+				<label for="id">ID:</label>
+				<input type="text" class="form-control" name="id" value="" th:value="${uprod.id}" readonly="readonly">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label for="name">NAME:</label>
+				<input type="text" class="form-control" placeholder="Enter password" name="name" value="" th:value="${uprod.name}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label for="name">PRICE:</label>
+				<input type="number" class="form-control" placeholder="Enter Name" name="price" value="" th:value="${uprod.price}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label for="name">RATE:</label>
+				<input type="text" class="form-control" placeholder="Enter Name" name="rate" value="" th:value="${uprod.rate}">
+			</div>
+		</div>
+		
+		<button type="submit" name="Update" class="btn btn-default">Update</button>
+
+	</form>
+</div>
+</html>
