@@ -26,14 +26,14 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/register")
-	public ModelAndView register(ModelAndView mv) {
+	public ModelAndView register(ModelAndView mv) {	// ModelAndView말고 Model을 써도 된다.
 		mv.setViewName("main");
 		mv.addObject("left", "prod/left");
 		mv.addObject("center", "prod/register");
-		return mv;
+		return mv;		// ModelAndView를 리턴하지 않고 String으로 해도 된다.
 	}
 	
-	@RequestMapping("/registerprod")
+	@RequestMapping("/registerimpl")
 	public ModelAndView registerprod(ModelAndView mv, ProductVO obj) {
 		try {
 			biz.register(obj);
@@ -41,6 +41,8 @@ public class ProductController {
 			mv.setViewName("main");
 			mv.addObject("left", "prod/left");
 			mv.addObject("center","prod/registerok");
+			int cnt = biz.getcnt();
+			mv.addObject("cnt", cnt);
 		} catch (Exception e) {
 			mv.addObject("center", "prod/registerfail");
 		}

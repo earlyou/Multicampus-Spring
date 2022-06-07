@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.multi.vo.CustVO;
 import com.multi.vo.ProductVO;
 
 @Repository
@@ -16,4 +15,5 @@ public interface ProductMapper {
 	public void update(ProductVO cust) throws Exception;
 	public ProductVO select(int id) throws Exception;
 	public List <ProductVO> selectall() throws Exception;
+	public int selectcnt() throws Exception;
 }

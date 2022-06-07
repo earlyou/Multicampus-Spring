@@ -7,6 +7,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="int" resultType="productVO">
 		SELECT * FROM product WHERE id=#{id}
 	</select>
+	<select id="selectcnt" resultType="int">
+		SELECT last_insert_id() as cnt
+	</select>
 	<select id="selectall" resultType="productVO">
 		SELECT * FROM product ORDER BY 1
 	</select>
@@ -19,7 +22,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="int">
 		DELETE FROM product WHERE id=#{id}
 	</delete>
-	
+
 </mapper>
 
 
