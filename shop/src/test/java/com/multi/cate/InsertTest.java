@@ -1,23 +1,23 @@
-package com.multi.product;
+package com.multi.cate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.ProductBiz;
-import com.multi.vo.ProductVO;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
 
 @SpringBootTest
-class UpdateTest {
+class InsertTest {
 
 	@Autowired
-	ProductBiz biz;
+	CateBiz biz;
 	
 	@Test
 	void contextLoads() {
-		ProductVO prod = new ProductVO(1006, "water", 6000, 11, "water.png");
+		CateVO cate = new CateVO(22, "long shirts", 20);
 		try {
-			biz.modify(prod);
+			biz.register(cate);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

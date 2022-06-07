@@ -22,4 +22,17 @@ public class CartVO {
 	private String catename;// category name
 	private Date regdate;
 	private int cnt;	// cart에 얼마나 많은 제품을 담았는지 count
+	
+	// Constructor
+	public CartVO(String uid, int pid, int cnt) {
+		this.uid = uid;
+		this.pid = pid;
+		this.cnt = cnt;
+	}
+	public CartVO(int id, String uid, int pid, int cnt) {
+		this.id = id;
+		this.uid = uid;
+		this.pid = pid;
+		this.cnt = cnt;
+	}
 }

@@ -1,23 +1,23 @@
-package com.multi.product;
+package com.multi.cart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.ProductBiz;
-import com.multi.vo.ProductVO;
+import com.multi.biz.CartBiz;
+import com.multi.vo.CartVO;
 
 @SpringBootTest
-class UpdateTest {
+class InsertlTest {
 
 	@Autowired
-	ProductBiz biz;
+	CartBiz biz;
 	
 	@Test
 	void contextLoads() {
-		ProductVO prod = new ProductVO(1006, "water", 6000, 11, "water.png");
+		CartVO cart = new CartVO("id02", 1006, 2);
 		try {
-			biz.modify(prod);
+			biz.register(cart);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

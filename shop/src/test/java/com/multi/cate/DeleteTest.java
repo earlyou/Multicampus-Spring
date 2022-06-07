@@ -1,23 +1,21 @@
-package com.multi.product;
+package com.multi.cate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.ProductBiz;
-import com.multi.vo.ProductVO;
+import com.multi.biz.CateBiz;
 
 @SpringBootTest
-class UpdateTest {
+class DeleteTest {
 
 	@Autowired
-	ProductBiz biz;
+	CateBiz biz;
 	
 	@Test
 	void contextLoads() {
-		ProductVO prod = new ProductVO(1006, "water", 6000, 11, "water.png");
 		try {
-			biz.modify(prod);
+			biz.remove(22);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

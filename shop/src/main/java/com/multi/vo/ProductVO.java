@@ -21,4 +21,13 @@ public class ProductVO {
 	private int cid;
 	private String catename;	// 나중에 join을 대비한 Field
 	private String imgname;
+	
+	// Constructor
+	public ProductVO(int id, String name, int price, int cid, String imgname) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.cid = cid;
+		this.imgname = imgname;
+	}
 }
