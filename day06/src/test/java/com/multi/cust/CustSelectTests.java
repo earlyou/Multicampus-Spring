@@ -8,20 +8,20 @@ import com.multi.biz.CustBiz;
 import com.multi.vo.CustVO;
 
 @SpringBootTest
-class CustInsertTests {
+class CustSelectTests {
 	
 	@Autowired
 	CustBiz biz;
 
 	@Test
 	void contextLoads() {
-		CustVO c = new CustVO("id09", "pwd09", "구말숙");
+		CustVO cust = null;
 		try {
-			biz.register(c);
-			System.out.println("Registered OK");
+			cust = biz.get("id04");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(cust);
 	}
 
 }

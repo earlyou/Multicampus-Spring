@@ -5,25 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
 
 @SpringBootTest
-class CustInsertTests {
+class CustDeleteTests {
 	
 	@Autowired
 	CustBiz biz;
 
 	@Test
 	void contextLoads() {
-		CustVO c = new CustVO("id09", "pwd09", "구말숙");
 		try {
-			biz.register(c);
-			System.out.println("Registered OK");
+			biz.remove("id55");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 }
 
 

@@ -1,24 +1,21 @@
-package com.multi.cust;
+package com.multi.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
+import com.multi.biz.ProductBiz;
 
 @SpringBootTest
-class CustInsertTests {
+class ProductDeleteTests {
 	
 	@Autowired
-	CustBiz biz;
+	ProductBiz biz;
 
 	@Test
 	void contextLoads() {
-		CustVO c = new CustVO("id09", "pwd09", "구말숙");
 		try {
-			biz.register(c);
-			System.out.println("Registered OK");
+			biz.remove(16);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
