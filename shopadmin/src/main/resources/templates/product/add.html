@@ -1,0 +1,62 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<script>
+function sendCid(cid){
+	$.ajax({
+		url:'/checkcid',
+		data:{'cid':cid},
+		success:function(data){
+			if(data == '1'){
+				$('#cspan').text('사용 불가능한 CID');
+			}else {
+				$('#cspan').text('사용 가능한 CID');
+			}
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('input[name="cid"]').keyup(function(){
+		var cid = $(this).val();
+		sendCid(cid);
+	});
+	
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'addimpl'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900A mb-4">Insert Product Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+           		<label for="name">NAME: </label>
+                <span id="nspan"></span><input type="text" class="form-control form-control-item" name="name" id="name">
+            </div>
+            <div class="form-group">
+            	<label for="price">PRICE: </label>
+                <span id="pspan"></span><input type="number" class="form-control form-control-item" name="price" id="price">
+            </div>
+            <div class="form-group">
+            	<label for="cid">CID: </label>
+                <span id="cspan"></span><input type="number" class="form-control form-control-item" name="cid" id="cid">
+            </div>
+            <div class="form-group">
+            	<label for="imgname">IMGNAME: </label>
+                <span id="ispan"></span><input type="text" class="form-control form-control-item" name="imgname" id="imgname">
+            </div>
+            <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
+                Register
+            </a>
+        </form>
+    </div>
+</div>
+</html>

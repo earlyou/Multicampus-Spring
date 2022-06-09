@@ -1,0 +1,53 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Customer Table</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer Information</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>REGDATE</th>
+                        <th>CID</th>
+                        <th>IMGNAME</th>
+                        <th>CATENAME</th>
+                        <th>MAINCATENAME</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                        <th>REGDATE</th>
+                        <th>CID</th>
+                        <th>IMGNAME</th>
+                        <th>CATENAME</th>
+                        <th>MAINCATENAME</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr th:each="p : ${plist}">
+                        <td><a href="" th:text="${p.id}" th:href="@{detail(id=${p.id})}">1005</a></td>
+                        <td th:text="${p.name}">top10</td>
+                        <td th:text="${p.price}">2000</td>
+                        <td th:text="${#dates.format(p.regdate,'yyyy/MM/dd')}">2022-06-08</td>
+                        <td th:text="${p.cid}">11</td>
+                        <td th:text="${p.imgname}">calender.jpg</td>
+                        <td th:text="${p.catename}">short pants</td>
+                        <td th:text="${p.maincatename}">pants</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</html>

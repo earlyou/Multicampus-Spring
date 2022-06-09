@@ -1,0 +1,58 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+            	<label for="id">ID: </label>
+                <input type="number" class="form-control form-control-item"
+                    name="id" id="id" value="1005" th:value="${p.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+            	<label for="name">NAME: </label>
+                <input type="text" class="form-control form-control-item"
+                    name="name" id="name" value="pepper" th:value="${p.name}">
+            </div>
+            <div class="form-group">
+            	<label for="price">PRICE: </label>
+                <input type="number" class="form-control form-control-item"
+                    name="price" id="price" value="10000" th:value="${p.price}">
+            </div>
+            <div class="form-group">
+            	<label for="regdate">REGDATE: </label>
+                <input type="text" class="form-control form-control-item"
+                    name="regdate" id="regdate" value="22/06/09" th:value="${#dates.format(p.regdate,'yyyy/MM/dd')}" readonly="readonly">
+            </div>
+            <div class="form-group">
+            	<label for="cid">CID: </label>
+                <input type="text" class="form-control form-control-item"
+                    name="cid" id="cid" value="11" th:value="${p.cid}">
+            </div>
+            <div class="form-group">
+            	<label for="imgname">IMGNAME: </label>
+                <input type="text" class="form-control form-control-item"
+                    name="imgname" id="imgname" value="Seoul" th:value="${p.imgname}">
+            </div>
+            
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                UPDATE
+            </a>
+        </form>
+    </div>
+</div>
+</html>

@@ -1,0 +1,65 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<script>
+function sendId(id){
+	$.ajax({
+		url:'/checkcateid',
+		data:{'id':id},		/*id를 'id'로 보내고 data를 받아온다.*/
+		success:function(data){
+			if(data == '1'){
+				$('#ispan').text('사용 불가능한 ID');
+			}else {
+				$('#ispan').text('사용 가능한 ID');
+			}
+		}
+	});
+};
+
+$(document).ready(function(){
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val();
+		sendId(id);
+	});
+	
+	$('#registerbtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'addimpl'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900A mb-4">Insert Category Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+           		<label for="id">ID: </label><span id="ispan"></span>
+                <input type="number" class="form-control form-control-item" name="id" id="id">
+            </div>
+            <div class="form-group">
+            	<label for="name">NAME: </label><span id="nspan"></span>
+                <input type="text" class="form-control form-control-item" name="name" id="name">
+            </div>
+            <div class="form-group">
+            	<label for="pid">PID: </label><span id="pspan"></span>
+           <!-- <input type="number" class="form-control form-control-item" name="pid" id="pid"> -->
+            	<select th:field="*{calist}" class="form-control form-control-item">
+            		<option value="0">0</option>
+            		<option th:each="c : ${calist}"
+            				th:text="${c.id}"
+            				th:value="${c.id}">
+            		</option>
+            	</select>
+            </div>
+            <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
+                Register
+            </a>
+        </form>
+    </div>
+</div>
+</html>

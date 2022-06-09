@@ -1,0 +1,50 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<script>
+$(document).ready(function(){
+	$('#updatebtn').click(function(){
+		$('.user').attr({
+			'method':'post',
+			'action':'update'
+		});
+		$('.user').submit();
+	});
+});
+</script>
+
+<div class="col-lg-6">
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Category Information</h1>
+        </div>
+        <form class="user">
+            <div class="form-group">
+            	<label for="id">ID: </label>
+                <input type="number" class="form-control form-control-item"
+                    name="id" id="id" value="11" th:value="${ca.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+            	<label for="name">NAME: </label>
+                <input type="text" class="form-control form-control-item"
+                    name="name" id="name" value="short shirts" th:value="${ca.name}">
+            </div>
+            <div class="form-group">
+            	<label for="pid">PID: </label>
+        <!--    <input type="number" class="form-control form-control-item"
+                    name="pid" id="pid" value="10" th:value="${ca.pid}">	 -->
+				<select th:field="*{calist}" class="form-control form-control-item">
+            		<option value="0">0</option>
+            		<option th:each="c : ${calist}"
+            				th:text="${c.id}"
+            				th:value="${c.id}"
+            				th:selected="${c.id==ca.pid}">
+            		</option>
+            	</select>
+            </div>
+            <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
+                UPDATE
+            </a>
+        </form>
+    </div>
+</div>
+</html>

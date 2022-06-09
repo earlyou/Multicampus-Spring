@@ -7,50 +7,60 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
+import com.multi.biz.CateBiz;
+import com.multi.vo.CateVO;
 
 @Controller
-@RequestMapping("/cust")
-public class CustController {
+@RequestMapping("/cate")
+public class CateController {
 	
 	@Autowired
-	CustBiz biz;
+	CateBiz biz;
 	
 	@RequestMapping("/add")
 	public String add(Model m) {
-		m.addAttribute("center", "cust/add");
+		List<CateVO> list = null;
+		try {
+			list = biz.getmain();
+			m.addAttribute("calist", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		m.addAttribute("center","cate/add");
 		return "/index";
 	}
 	
 	@RequestMapping("/select")
 	public String select(Model m) {
-		List<CustVO> list = null;
+		List<CateVO> list = null;
 		try {
 			list = biz.get();
-			m.addAttribute("clist", list);
+			m.addAttribute("calist", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("center", "cust/select");
+		m.addAttribute("center", "cate/select");
 		return "/index";
 	}
 	
 	@RequestMapping("/detail")
-	public String detail(Model m, String id) {
-		CustVO obj = null;
+	public String detail(Model m, int id) {
+		CateVO obj = null;
+		List<CateVO> list = null;
 		try {
 			obj = biz.get(id);
-			m.addAttribute("c", obj);
+			list = biz.getmain();
+			m.addAttribute("calist", list);
+			m.addAttribute("ca", obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		m.addAttribute("center", "cust/detail");
+		m.addAttribute("center", "cate/detail");
 		return "/index";
 	}
 	
 	@RequestMapping("/update")
-	public String update(Model m, CustVO obj) {
+	public String update(Model m, CateVO obj) {
 		try {
 			biz.modify(obj);
 		} catch (Exception e) {
@@ -60,7 +70,7 @@ public class CustController {
 	}
 	
 	@RequestMapping("/addimpl")
-	public String addimpl(Model m, CustVO obj) {
+	public String addimpl(Model m, CateVO obj) {
 		try {
 			biz.register(obj);
 		} catch (Exception e) {

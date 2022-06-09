@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN cate c ON p.cid = c.id
 	</select>
 	<select id="selectall2" resultType="productVO">
-		SELECT p.id as id, p.name as name, p.price, p.regdate, p.cid as cid,
-		p.imgname as imgname, c.name as catename, c2.name as maincatename
+		SELECT p.id as id, p.name as name, p.price as price, p.regdate as regdate, 
+		p.cid as cid, p.imgname as imgname, c.name as catename, c2.name as maincatename
 		FROM product p
 		INNER JOIN cate c ON p.cid = c.id
 		INNER JOIN cate c2 ON c.pid = c2.id;
@@ -27,6 +27,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM product p
 		INNER JOIN cate c ON p.cid = c.id
 		GROUP BY catename
+	</select>
+	<select id="selectlastid" resultType="int">
+		SELECT last_insert_id() as id
 	</select>
 	<insert id="insert" parameterType="productVO">
 		INSERT INTO PRODUCT VALUES (NULL,#{name},#{price},CURDATE(),#{cid},#{imgname})

@@ -1,27 +1,24 @@
-package com.multi.cust;
+package com.multi.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.multi.biz.CustBiz;
-import com.multi.vo.CustVO;
+import com.multi.biz.MainBiz;
 
 @SpringBootTest
-class SelectTest {
+class CustCntTest {
 
 	@Autowired
-	CustBiz biz;
+	MainBiz biz;
 	
 	@Test
 	void contextLoads() {
-		CustVO cust = null;
 		try {
-			cust = biz.get("id121");
+			System.out.println(biz.getCustCnt());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(cust);
 	}
 
 }

@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		WHERE c.id = #{id}
 	</select>
 	<select id="selectall" resultType="cartVO">
-		SELECT c.id, cu.id as uid, ca.name as catename, p.id as pid, p.name as pname, p.price as pprice, c.regdate, c.cnt FROM CART c
+		SELECT c.id as id, cu.id as uid, ca.name as catename, p.id as pid, p.name as pname, p.price as pprice, c.regdate as regdate, c.cnt as cnt FROM CART c
 		INNER JOIN CUST CU ON c.uid = cu.id
 		INNER JOIN PRODUCT p ON c.pid = p.id
 		INNER JOIN CATE ca ON ca.id = p.cid
