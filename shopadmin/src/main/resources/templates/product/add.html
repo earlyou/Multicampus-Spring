@@ -1,28 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <script>
-function sendCid(cid){
-	$.ajax({
-		url:'/checkcid',
-		data:{'cid':cid},
-		success:function(data){
-			if(data == '1'){
-				$('#cspan').text('사용 불가능한 CID');
-			}else {
-				$('#cspan').text('사용 가능한 CID');
-			}
-		}
-	});
-};
-
 $(document).ready(function(){
-	$('input[name="cid"]').keyup(function(){
-		var cid = $(this).val();
-		sendCid(cid);
-	});
-	
 	$('#registerbtn').click(function(){
 		$('.user').attr({
+			'enctype':'multipart/form-data',
 			'method':'post',
 			'action':'addimpl'
 		});
@@ -38,20 +20,25 @@ $(document).ready(function(){
         </div>
         <form class="user">
             <div class="form-group">
-           		<label for="name">NAME: </label>
-                <span id="nspan"></span><input type="text" class="form-control form-control-item" name="name" id="name">
+           		<label for="name">NAME: </label><span id="nspan"></span>
+                <input type="text" class="form-control form-control-item" name="name" id="name">
             </div>
             <div class="form-group">
-            	<label for="price">PRICE: </label>
-                <span id="pspan"></span><input type="number" class="form-control form-control-item" name="price" id="price">
+            	<label for="price">PRICE: </label><span id="pspan">
+                </span><input type="number" class="form-control form-control-item" name="price" id="price">
             </div>
             <div class="form-group">
-            	<label for="cid">CID: </label>
-                <span id="cspan"></span><input type="number" class="form-control form-control-item" name="cid" id="cid">
+            	<label for="cid">CATEGORY ID: </label>
+                <select name="cid" class="form-control form-control-item">
+            		<option th:each="c : ${slist}"
+            				th:text="${c.id+' : '+c.name}"
+            				th:value="${c.id}">
+            		</option>
+            	</select><!--Spring day09 참고-->
             </div>
             <div class="form-group">
-            	<label for="imgname">IMGNAME: </label>
-                <span id="ispan"></span><input type="text" class="form-control form-control-item" name="imgname" id="imgname">
+            	<label for="imgname">IMGNAME: </label><span id="ispan"></span>
+            	<input type="file" class="form-control form-control-item" name="mf" id="imgname">
             </div>
             <a id="registerbtn" href="#" class="btn btn-primary btn-user btn-block">
                 Register

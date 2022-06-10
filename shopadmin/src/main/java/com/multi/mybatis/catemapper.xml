@@ -13,6 +13,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectmain" resultType="cateVO">
 		SELECT * FROM CATE WHERE pid IS NULL
 	</select>
+	<select id="selectchild" resultType="cateVO">
+		SELECT * FROM CATE
+		WHERE pid IS NOT NULL
+	</select>
 	<insert id="insert" parameterType="cateVO">
 		<if test="pid != 0">
 			INSERT INTO CATE VALUES (#{id},#{name},#{pid})

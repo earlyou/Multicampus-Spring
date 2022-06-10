@@ -2,6 +2,8 @@ package com.multi.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,7 @@ public class ProductVO {
 	private String imgname;		// image name
 	private String catename;	// 나중에 join을 대비한 Field
 	private String maincatename;
+	private MultipartFile mf;	// file 전송 받기 위한 field
 	
 	// Constructor
 	// for update

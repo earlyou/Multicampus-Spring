@@ -1,7 +1,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<meta charset="UTF-8">
 <script>
 $(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제 하시겠습니까?');
+		if (c == true) {
+			location.href='delete?id='+id;
+		}
+	});
+	
 	$('#updatebtn').click(function(){
 		$('.user').attr({
 			'method':'post',
@@ -16,6 +24,7 @@ $(document).ready(function(){
     <div class="p-5">
         <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Category Information</h1>
+            <h1 th:if="${msg != null}" th:text="${msg}"></h1>
         </div>
         <form class="user">
             <div class="form-group">
@@ -32,17 +41,20 @@ $(document).ready(function(){
             	<label for="pid">PID: </label>
         <!--    <input type="number" class="form-control form-control-item"
                     name="pid" id="pid" value="10" th:value="${ca.pid}">	 -->
-				<select th:field="*{calist}" class="form-control form-control-item">
-            		<option value="0">0</option>
+				<select name=pid class="form-control form-control-item">
+            		<option value="0">TOP</option>
             		<option th:each="c : ${calist}"
-            				th:text="${c.id}"
+            				th:text="${c.id+' : '+c.name}"
             				th:value="${c.id}"
-            				th:selected="${c.id==ca.pid}">
+            				th:selected="${c.id == ca.pid}">
             		</option>
             	</select>
             </div>
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
                 UPDATE
+            </a>
+            <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+                DELETE
             </a>
         </form>
     </div>

@@ -1,4 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Category Tables</h1>
 
@@ -28,7 +29,8 @@
                     <tr th:each="ca : ${calist}">
                         <td><a href="" th:text="${ca.id}" th:href="@{detail(id=${ca.id})}">11</a></td>
                         <td th:text="${ca.name}">short shirts</td>
-                        <td th:text="${ca.pid}">10</td>
+                        <td th:if="${ca.pid == 0}" th:text="TOP">10</td>
+                        <td th:unless="${ca.pid == 0}" th:text="${ca.pid}">10</td>
                     </tr>
                 </tbody>
             </table>

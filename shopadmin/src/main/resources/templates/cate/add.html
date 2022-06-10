@@ -4,7 +4,7 @@
 function sendId(id){
 	$.ajax({
 		url:'/checkcateid',
-		data:{'id':id},		/*id를 'id'로 보내고 data를 받아온다.*/
+		data:{'id':id},
 		success:function(data){
 			if(data == '1'){
 				$('#ispan').text('사용 불가능한 ID');
@@ -48,10 +48,10 @@ $(document).ready(function(){
             <div class="form-group">
             	<label for="pid">PID: </label><span id="pspan"></span>
            <!-- <input type="number" class="form-control form-control-item" name="pid" id="pid"> -->
-            	<select th:field="*{calist}" class="form-control form-control-item">
-            		<option value="0">0</option>
-            		<option th:each="c : ${calist}"
-            				th:text="${c.id}"
+            	<select name="pid" class="form-control form-control-item">
+            		<option value="0">TOP</option>
+            		<option th:each="c : ${slist}"
+            				th:text="${c.id+' : '+c.name}"
             				th:value="${c.id}">
             		</option>
             	</select>

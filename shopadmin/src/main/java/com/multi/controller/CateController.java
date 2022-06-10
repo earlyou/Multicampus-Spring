@@ -22,7 +22,7 @@ public class CateController {
 		List<CateVO> list = null;
 		try {
 			list = biz.getmain();
-			m.addAttribute("calist", list);
+			m.addAttribute("slist", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -77,5 +77,16 @@ public class CateController {
 			e.printStackTrace();
 		}
 		return "redirect:detail?id="+obj.getId();
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(int id, Model m) {
+		try {
+			biz.remove(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:detail?id="+id;
+		}
+		return "redirect:select";
 	}
 }

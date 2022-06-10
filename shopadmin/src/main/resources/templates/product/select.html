@@ -1,11 +1,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<style>
+	td > img{
+		width: 100px;
+	}
+</style>
+
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Customer Table</h1>
+<h1 class="h3 mb-2 text-gray-800">Product Table</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Customer Information</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Product Information</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -16,10 +23,10 @@
                         <th>NAME</th>
                         <th>PRICE</th>
                         <th>REGDATE</th>
-                        <th>CID</th>
-                        <th>IMGNAME</th>
-                        <th>CATENAME</th>
-                        <th>MAINCATENAME</th>
+                        <th>CATEGORY ID</th>
+                        <th>IMAGE NAME</th>
+                        <th>CATEGORY NAME</th>
+                        <th>MAIN CATEGORY NAME</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -28,10 +35,10 @@
                         <th>NAME</th>
                         <th>PRICE</th>
                         <th>REGDATE</th>
-                        <th>CID</th>
-                        <th>IMGNAME</th>
-                        <th>CATENAME</th>
-                        <th>MAINCATENAME</th>
+                        <th>CATEGORY ID</th>
+                        <th>IMAGE NAME</th>
+                        <th>CATEGORY NAME</th>
+                        <th>MAIN CATEGORY NAME</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -41,7 +48,7 @@
                         <td th:text="${p.price}">2000</td>
                         <td th:text="${#dates.format(p.regdate,'yyyy/MM/dd')}">2022-06-08</td>
                         <td th:text="${p.cid}">11</td>
-                        <td th:text="${p.imgname}">calender.jpg</td>
+                        <td><img th:src="@{'/img/'+${p.imgname}}"></td>
                         <td th:text="${p.catename}">short pants</td>
                         <td th:text="${p.maincatename}">pants</td>
                     </tr>

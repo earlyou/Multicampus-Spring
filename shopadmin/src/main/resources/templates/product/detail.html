@@ -1,9 +1,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<meta charset="UTF-8">
 <script>
 $(document).ready(function(){
+	$('#deletebtn').click(function(){
+		var id = $('input[name="id"]').val();
+		var c = confirm('삭제 하시겠습니까?');
+		if (c == true) {
+			location.href='delete?id='+id;
+		}
+	});
+	
 	$('#updatebtn').click(function(){
 		$('.user').attr({
+			'enctype':'multipart/form-data',
 			'method':'post',
 			'action':'update'
 		});
@@ -11,13 +20,20 @@ $(document).ready(function(){
 	});
 });
 </script>
-
+<style>
+	#pimg{
+		width: 500px;
+	}
+</style>
 <div class="col-lg-6">
     <div class="p-5">
         <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Customer Information</h1>
+            <h1 class="h4 text-gray-900 mb-4">Product Information</h1>
         </div>
         <form class="user">
+     	  	<div class="form-group">
+     	  		<img th:src="@{'/img/'+${p.imgname}}" id="pimg">
+     	  	</div>
             <div class="form-group">
             	<label for="id">ID: </label>
                 <input type="number" class="form-control form-control-item"
@@ -39,18 +55,26 @@ $(document).ready(function(){
                     name="regdate" id="regdate" value="22/06/09" th:value="${#dates.format(p.regdate,'yyyy/MM/dd')}" readonly="readonly">
             </div>
             <div class="form-group">
-            	<label for="cid">CID: </label>
-                <input type="text" class="form-control form-control-item"
-                    name="cid" id="cid" value="11" th:value="${p.cid}">
+            	<label for="cid">CATEGORY ID: </label>
+          		<select name=cid class="form-control form-control-item">
+            		<option th:each="c : ${calist}"
+            				th:text="${c.id+' : '+c.name}"
+            				th:value="${c.id}"
+            				th:selected="${c.id == p.cid}">
+            		</option>
+            	</select> <!--Spring day09 참고-->
             </div>
             <div class="form-group">
-            	<label for="imgname">IMGNAME: </label>
-                <input type="text" class="form-control form-control-item"
-                    name="imgname" id="imgname" value="Seoul" th:value="${p.imgname}">
+            	<label for="imgname">IMAGE NAME: </label>
+                <input type="file" class="form-control form-control-item"
+                    name="mf" id="imgname" value="" th:value="${p.imgname}">
             </div>
             
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">
                 UPDATE
+            </a>
+            <a id="deletebtn" href="#" class="btn btn-primary btn-user btn-block">
+                DELETE
             </a>
         </form>
     </div>

@@ -29,6 +29,9 @@ public class AjaxController {
 	public String checkid(String id) {
 		String result = "";
 		CustVO o = null;
+		if (id.equals("") || id == null) {
+			return "1";
+		}
 		try {
 			o = cbiz.get(id);
 			if (o == null) {
@@ -44,7 +47,7 @@ public class AjaxController {
 	
 	// product/add
 	@RequestMapping("checkcid")
-	public String checkcid(int cid) {
+	public String checkcid(String cid) {
 		String result = "";
 		List<CateVO> list = null;
 		try {
@@ -53,7 +56,7 @@ public class AjaxController {
 			e.printStackTrace();
 		}
 		for (CateVO o : list) {
-			if (o.getId() == cid) {
+			if (o.getId() == Integer.parseInt(cid)) {
 				result = "0";
 				return result;
 			} else {
@@ -65,11 +68,14 @@ public class AjaxController {
 	
 	// cate/add
 	@RequestMapping("checkcateid")
-	public String checkcateid(int id) {
+	public String checkcateid(String id) {
 		String result = "";
 		CateVO o = null;
+		if (id.equals("") || id == null) {
+			return "1";
+		}
 		try {
-			o = cabiz.get(id);
+			o = cabiz.get(Integer.parseInt(id));
 			if (o == null) {
 				result = "0";
 			} else {
