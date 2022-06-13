@@ -21,7 +21,7 @@ $(document).ready(function(){
 });
 </script>
 <style>
-	#pimg{
+	.form-group > img{
 		width: 500px;
 	}
 </style>
@@ -32,7 +32,8 @@ $(document).ready(function(){
         </div>
         <form class="user">
      	  	<div class="form-group">
-     	  		<img th:src="@{'/img/'+${p.imgname}}" id="pimg">
+     	  		<img th:src="@{'/img/'+${p.imgname}}">
+     	  		<input type="hidden" name="imgname" th:value="${p.imgname}">
      	  	</div>
             <div class="form-group">
             	<label for="id">ID: </label>
@@ -67,7 +68,7 @@ $(document).ready(function(){
             <div class="form-group">
             	<label for="imgname">IMAGE NAME: </label>
                 <input type="file" class="form-control form-control-item"
-                    name="mf" id="imgname" value="" th:value="${p.imgname}">
+                    name="mf" id="imgname" th:value="${p.imgname}">
             </div>
             
             <a id="updatebtn" href="#" class="btn btn-primary btn-user btn-block">

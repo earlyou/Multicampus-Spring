@@ -67,11 +67,19 @@ public class ProductController {
 	
 	@RequestMapping("/update")
 	public String update(Model m, ProductVO obj) {
-		String imgname = obj.getMf().getOriginalFilename();
-		obj.setImgname(imgname);
+/*		String imgname = "";
+		imgname = obj.getMf().getOriginalFilename();
+		if (!imgname.equals("")) {
+			obj.setImgname(imgname);
+			Util.saveFile(obj.getMf());
+		}*/
+		String iname = obj.getMf().getOriginalFilename();
+		if (!iname.equals("")) {
+			obj.setImgname(iname);
+			Util.saveFile(obj.getMf());
+		}
 		try {
 			biz.modify(obj);
-			Util.saveFile(obj.getMf());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -81,6 +89,7 @@ public class ProductController {
 	@RequestMapping("/addimpl")
 	public String addimpl(Model m, ProductVO obj) {
 		// name, price, cid, mf(->imgname) 파일 이름만 꺼낸다, 파일은 static/img에 저장
+		// file 여러개 업로드 할 때는 VO에 mf1, mf2, ... 이런 식으로 처리한다
 		String imgname = obj.getMf().getOriginalFilename();		// file name
 		obj.setImgname(imgname);	// imgname 변수에 String 넣기
 		int id = 0;

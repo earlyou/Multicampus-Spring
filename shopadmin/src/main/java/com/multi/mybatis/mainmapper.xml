@@ -7,8 +7,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="getcustcnt" resultType="int">
 		SELECT count(*) FROM CUST
 	</select>
+	<select id="getadmin" parameterType="string" resultType="adminVO">
+		SELECT * FROM ADMIN WHERE ID=#{id}
+	</select>
 	<select id="getproductcnt" resultType="int">
 		SELECT count(*) FROM PRODUCT
+	</select>
+	<select id="searchproduct" parameterType="String" resultType="productVO">
+		SELECT p.id as id, p.name as name, p.price, p.regdate, p.cid as cid,
+		p.imgname as imgname, c.name as catename 
+		FROM product p
+		INNER JOIN cate c ON p.cid = c.id
+		WHERE p.name LIKE CONCAT('%',#{txt},'%')
 	</select>
 
 </mapper>

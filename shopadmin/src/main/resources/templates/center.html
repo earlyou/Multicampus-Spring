@@ -1,4 +1,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+	#container{
+		width: 500px;
+		height: 300px;
+	}
+</style>
+<script>
+function display(data){
+	Highcharts.chart('container', {
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie'
+	    },
+	    title: {
+	        text: 'Browser market shares in January, 2018'
+	    },
+	    tooltip: {
+	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	    },
+	    accessibility: {
+	        point: {
+	            valueSuffix: '%'
+	        }
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: true,
+	                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+	            }
+	        }
+	    },
+	    series: [{
+	        name: 'Brands',
+	        colorByPoint: true,
+	        data: data
+	    }]
+	});
+}
+function getdata(){
+	$.ajax({
+		url:'/chart1',
+		success:function(data){
+//			alert(data);
+			display(data);
+		}
+	});
+};
+$(document).ready(function(){
+	getdata();
+});
+</script>
+
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -110,9 +167,7 @@
             </div>
             <!-- Card Body, Chart part -->
              <div class="card-body">
-                 <div class="chart-area">
-                     <canvas id="myAreaChart"></canvas>
-                 </div>
+                 <div id="container"></div>
              </div>
          </div>
      </div>
