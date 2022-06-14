@@ -1,0 +1,84 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<script>
+function checkId(id){
+	$.ajax({
+		url:'/checkid',
+		data:{'id':id},
+		success:function(data){
+			if (data == '1') {
+				$('#ispan').text('중복 ID가 있습니다.')
+			} else {
+				$('#ispan').text('사용 가능한 ID입니다.')
+			}
+		}
+	});
+}
+$(document).ready(function(){
+	$('input[name="id"]').keyup(function(){
+		var id = $(this).val();
+		if (id == "") {
+			$('#ispan').text('아이디를 입력해주세요.');
+		}else {
+			checkId(id);
+		}
+	});
+	$('input[name="id"]').blur(function(){
+		var id = $(this).val();
+		if (id == "") {
+			$('#ispan').text('아이디를 입력해주세요.');
+		}else {
+			checkId(id);
+		}
+	});
+	$('#register_bt').click(function(){
+		
+		$('#register_form').attr({
+			'method':'post',
+			'action':'/registerimpl'
+		});
+		$('#register_form').submit();
+	});
+});
+</script>
+<div class="container">
+	<div class="col-sm-offset-2 col-sm-10">
+		<h2>Register</h2>
+	</div>
+	<form class="form-horizontal" id="register_form">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="id">ID:</label>
+			<div class="col-sm-3">
+				<input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
+			</div>
+			<div class="col-sm-6">
+				<h5 id="ispan"></h5>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-3">          
+				<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="name">Name:</label>
+			<div class="col-sm-3">          
+				<input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="addr">Address:</label>
+			<div class="col-sm-3">          
+				<input type="text" class="form-control" id="addr" placeholder="Enter Address" name="addr">
+			</div>
+		</div>
+
+		<div class="form-group">        
+			<div class="col-sm-offset-2 col-sm-10">
+				<button id="register_bt" class="btn btn-default">Register</button>
+			</div>
+		</div>
+	</form>
+</div>
+</html>

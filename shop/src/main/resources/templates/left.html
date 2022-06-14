@@ -1,5 +1,5 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 
-<p><a href="#">main1</a></p>
-<p><a href="#">main2</a></p>
-<p><a href="#">main3</a></p>
+<p th:each="c : ${leftcatelist}"><a href="#" th:text="${c.id+' : '+c.name}">main1</a></p>
+</html>

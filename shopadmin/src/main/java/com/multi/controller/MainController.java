@@ -48,7 +48,10 @@ public class MainController {
 	}
 	
 	@RequestMapping("/login")
-	public String login(Model m) {
+	public String login(Model m, String msg) {
+		if (msg != null && msg.equals("f")) {
+			m.addAttribute("msg", "아이디 혹은 비밀번호가 틀렸습니다.");
+		}
 		m.addAttribute("center", "login");
 		return "/index";
 	}
@@ -58,19 +61,16 @@ public class MainController {
 		AdminVO admin = null;
 		try {
 			admin = biz.getAdmin(id);
-			if (admin != null) {
-				if (admin.getPwd().equals(pwd)) {
-					session.setAttribute("loginadmin", admin);
-					m.addAttribute("center", "center");
-					m.addAttribute("admin",admin);
-				} else {
-					throw new Exception();
-				}
-			}else {
+			if (admin == null) {
+				throw new Exception();
+			}
+			if (admin.getPwd().equals(pwd)) {
+				session.setAttribute("loginadmin", admin);
+			} else {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			m.addAttribute("center", "loginfail");
+			return "redirect:/login?msg=f";		// Query String: ~~?~=~
 		}
 		return "/index";
 	}
@@ -80,7 +80,6 @@ public class MainController {
 		if (session != null) {
 			session.invalidate();
 		}
-		m.addAttribute("center", "center");
 		return "/index";
 	}
 }

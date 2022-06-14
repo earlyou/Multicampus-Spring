@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM CATE
 	</select>
 	<select id="selectmain" resultType="cateVO">
-		SELECT * FROM CATE WHERE pid IS NULL
+		SELECT * FROM CATE WHERE PID IS NULL
+	</select>
+	<select id="selectsub" parameterType="int" resultType="cateVO">
+		SELECT * FROM CATE WHERE PID=#{id}
 	</select>
 	<insert id="insert" parameterType="cateVO">
 		<if test="pid != 0">

@@ -57,21 +57,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>                        
 				</button>
-				<a class="navbar-brand" href="#">한글</a>
+				<a class="navbar-brand" href="/">Home</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="/">Home</a></li>
-					<li><a href="/cust/">Cust</a></li>
-					<li><a href="/prod/">Product</a></li>
+					<li th:each="c : ${catelist}"><a th:href="@{/getcate(id=${c.id})}" th:text="${c.name}"></a></li>
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
+					<li th:if="${session.logincust == null}"><a href="/register">
+						<span class="glyphicon glyphicon-registration-mark"></span> Register</a>
+					</li>
 					<li th:if="${session.logincust == null}"><a href="/login">
 						<span class="glyphicon glyphicon-log-in"></span> Login</a>
 					</li>	<!-- thymeleaf로 if else문 만들기 -->
 					<li th:unless="${session.logincust == null}"><a href="/logout">
-						<span th:text="${session.logincust.name}"></span>
+						<span th:text="${session.logincust.name}+님"></span>
 						<span class="glyphicon glyphicon-log-out"></span> Logout</a>
 					</li>
 				</ul>
