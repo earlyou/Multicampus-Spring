@@ -71,6 +71,9 @@
 					<li th:if="${session.logincust == null}"><a href="/login">
 						<span class="glyphicon glyphicon-log-in"></span> Login</a>
 					</li>	<!-- thymeleaf로 if else문 만들기 -->
+					<li th:unless="${session.logincust == null}"><a href="/cart">
+						<span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+					</li>
 					<li th:unless="${session.logincust == null}"><a href="/logout">
 						<span th:text="${session.logincust.name}+님"></span>
 						<span class="glyphicon glyphicon-log-out"></span> Logout</a>

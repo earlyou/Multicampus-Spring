@@ -17,7 +17,7 @@ class SelectTest {
 	void contextLoads() {
 		ProductVO prod = null;
 		try {
-			prod = biz.get(1010);
+			prod = biz.get(1023);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

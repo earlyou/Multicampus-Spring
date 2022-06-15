@@ -1,5 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 
-<p th:each="c : ${leftcatelist}"><a href="#" th:text="${c.id+' : '+c.name}">main1</a></p>
+<p th:each="c : ${leftcatelist}">
+	<a th:href="@{/getproduct(id=${c.id},name=${c.name})}" th:text="${c.id+' : '+c.name}"></a>
+</p>
 </html>
