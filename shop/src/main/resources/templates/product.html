@@ -6,6 +6,18 @@
 	}
 </style>
 <script>
+function addcart(pid){
+	var cid = $('#cid').val();
+	var cnt = $('#'+pid+'cnt').val();
+	$.ajax({
+		url:'/addcart',
+		data:{'uid':cid,'pid':pid,'cnt':cnt},
+		success:function(data){
+			alert('Successfully Added to Cart');
+		}
+	});
+};
+/*
 $(document).ready(function(){
 	$('#inputcart').click(function(){
 		var cid = $('#cid').val();
@@ -20,6 +32,7 @@ $(document).ready(function(){
 		});
 	});
 });
+*/
 </script>
 
 <h1 th:text="${menu}+' List'"></h1>
@@ -47,7 +60,7 @@ $(document).ready(function(){
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title" th:text="${p.name}">Modal Header</h4>
-						<img width="400px" th:src="@{'/img/'+${p.imgname}}">
+						<img width="400px" th:src="'/img/'+${p.imgname}"> <!-- th:src="@{'/img/'+${p.imgname}}" -->
 					</div>
 					<div class="modal-body">
 						<p th:text="${p.catename}"></p>
@@ -55,18 +68,18 @@ $(document).ready(function(){
 					</div>
 					<div th:if="${session.logincust != null}" class="modal-body">
 						<div class="form-group">
-							<input type="hidden" th:value="${p.id}" id="pid">
+<!-- 						<input type="hidden" th:value="${p.id}" id="pid"> -->
 							<input type="hidden" th:value="${session.logincust.id}" id="cid">
 							<label for="cnt">Count:</label>
-							<select class="form-control" id="cnt">
+							<select class="form-control" th:id="${p.id}+'cnt'">	<!-- 누구의 cart정보인지 구분하기 위함 -->
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
 							</select>
 						</div>
-						<button id="inputcart" type="button" class="btn btn-default">Add to Cart</button>
-					</div>
+						<button th:onclick="addcart([[${p.id}]])" id="inputcart" type="button" class="btn btn-default">Add to Cart</button>
+					</div>		
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
