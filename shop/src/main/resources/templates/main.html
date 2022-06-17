@@ -63,6 +63,9 @@
 				<ul class="nav navbar-nav">
 					<li th:each="c : ${catelist}"><a th:href="@{/getcate(id=${c.id})}" th:text="${c.name}"></a></li>
 				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="/googlemap">Google Map</a></li>
+				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li th:if="${session.logincust == null}"><a href="/register">

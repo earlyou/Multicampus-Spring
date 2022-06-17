@@ -152,4 +152,10 @@ public class MainController {
 		m.addAttribute("center", "cart");
 		return "main";
 	}
+	
+	// -> gmap.html
+	@RequestMapping("/googlemap")
+	public String login() {
+		return "gmap";
+	}
 }
